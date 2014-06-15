@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package taskschedulingsimgui;
 
 import java.io.File;
@@ -18,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author ljubo
+ * @author Ljubo Raicevi <rljubo90@gmail.com>
  */
 public class FMain extends javax.swing.JFrame {
 
@@ -27,6 +21,7 @@ public class FMain extends javax.swing.JFrame {
      */
     public FMain() {
         initComponents();
+        lInputSet.setModel(new DefaultListModel());
     }
 
     /**
@@ -58,6 +53,11 @@ public class FMain extends javax.swing.JFrame {
         jLabel1.setText("Input Set");
 
         btnAddFixed.setText("Add Fixed Task");
+        btnAddFixed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddFixedActionPerformed(evt);
+            }
+        });
 
         btnAddRandomTask.setText("Add Random Task");
 
@@ -184,6 +184,11 @@ public class FMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mmSaveToFileActionPerformed
 
+    private void btnAddFixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFixedActionPerformed
+        DAddFixedTask daft = new DAddFixedTask(this, true);
+        daft.setVisible(true);
+    }//GEN-LAST:event_btnAddFixedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -217,6 +222,18 @@ public class FMain extends javax.swing.JFrame {
                 new FMain().setVisible(true);
             }
         });
+    }
+    
+    public void addFixedTask(
+            String taskName, 
+            int phase, 
+            int deadline, 
+            int exeTime, 
+            int maxExeTime) {
+        DefaultListModel dlm = (DefaultListModel)lInputSet.getModel();
+        String newTask = taskName + " " + phase + " " + deadline + " " 
+                + maxExeTime + " FIXED " + exeTime;
+        dlm.addElement(newTask);
     }
     
     private void loadInputFile(File f) {
