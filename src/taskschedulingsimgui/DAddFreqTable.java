@@ -37,6 +37,7 @@ public class DAddFreqTable extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jScrollPane1.setViewportView(lTable);
 
@@ -77,7 +78,7 @@ public class DAddFreqTable extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAddEntry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnRemoveEntry, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)))
+                            .addComponent(btnRemoveEntry, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -117,6 +118,7 @@ public class DAddFreqTable extends javax.swing.JDialog {
 
     private void btnAddEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEntryActionPerformed
         DAddEntryToFreqTable daetft = new DAddEntryToFreqTable(null, true);
+        daetft.setLocationRelativeTo(this);
         daetft.setVisible(true);
         if (!daetft.value.isEmpty() && !daetft.probability.isEmpty()) {
             addEntry(daetft.value, daetft.probability);
