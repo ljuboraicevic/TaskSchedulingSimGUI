@@ -3,6 +3,7 @@ package taskschedulingsimgui;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,14 +35,15 @@ public class FMain extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        btnAddFixed = new javax.swing.JButton();
-        btnAddRandomTask = new javax.swing.JButton();
+        btnAddTask = new javax.swing.JButton();
         btnRemoveTask = new javax.swing.JButton();
         btnStart = new javax.swing.JButton();
-        tfRepetitions = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lInputSet = new javax.swing.JList();
+        spnRepetitions = new javax.swing.JSpinner();
+        spnSimulationLength = new javax.swing.JSpinner();
+        jLabel3 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JMenuBar();
         mmFile = new javax.swing.JMenu();
         mmLoadFromFile = new javax.swing.JMenuItem();
@@ -52,14 +54,12 @@ public class FMain extends javax.swing.JFrame {
 
         jLabel1.setText("Input Set");
 
-        btnAddFixed.setText("Add Fixed Task");
-        btnAddFixed.addActionListener(new java.awt.event.ActionListener() {
+        btnAddTask.setText("Add Task");
+        btnAddTask.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddFixedActionPerformed(evt);
+                btnAddTaskActionPerformed(evt);
             }
         });
-
-        btnAddRandomTask.setText("Add Random Task");
 
         btnRemoveTask.setText("Remove Task");
         btnRemoveTask.addActionListener(new java.awt.event.ActionListener() {
@@ -70,12 +70,15 @@ public class FMain extends javax.swing.JFrame {
 
         btnStart.setText("Start");
 
-        tfRepetitions.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        tfRepetitions.setText("1");
-
-        jLabel2.setText("Repetitions");
+        jLabel2.setText("Repetitions:");
 
         jScrollPane2.setViewportView(lInputSet);
+
+        spnRepetitions.setValue(1);
+
+        spnSimulationLength.setValue(1);
+
+        jLabel3.setText("Simulation length:");
 
         mmFile.setText("File");
 
@@ -105,38 +108,42 @@ public class FMain extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnAddRandomTask, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                            .addComponent(btnRemoveTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAddFixed, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tfRepetitions)))
-                        .addContainerGap())
-                    .addComponent(jLabel1)))
+                        .addComponent(spnSimulationLength, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRemoveTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAddTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnRepetitions, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(spnSimulationLength, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnAddFixed)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAddRandomTask)
+                        .addComponent(btnAddTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemoveTask)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 253, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfRepetitions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(spnRepetitions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -148,46 +155,38 @@ public class FMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mmLoadFromFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmLoadFromFileActionPerformed
-        JFileChooser openFile = new JFileChooser();
-        int ret = openFile.showOpenDialog(null);
+        JFileChooser openFileDialog = new JFileChooser();
+        int ret = openFileDialog.showOpenDialog(null);
         
         if (ret == JFileChooser.APPROVE_OPTION) {
-             loadInputFile(openFile.getSelectedFile());
+             loadInputFile(openFileDialog.getSelectedFile());
         }
     }//GEN-LAST:event_mmLoadFromFileActionPerformed
 
     private void btnRemoveTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveTaskActionPerformed
-        DefaultListModel dlm = (DefaultListModel) lInputSet.getModel();
-        dlm.removeElementAt(lInputSet.getSelectedIndex());
+        if (lInputSet.getModel().getSize() > 0) {
+            DefaultListModel dlm = (DefaultListModel) lInputSet.getModel();
+            dlm.removeElementAt(lInputSet.getSelectedIndex());
+        }
     }//GEN-LAST:event_btnRemoveTaskActionPerformed
 
     private void mmSaveToFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mmSaveToFileActionPerformed
-        JFileChooser saveFile = new JFileChooser();
-        int ret = saveFile.showOpenDialog(null);
+        JFileChooser saveFileDialog = new JFileChooser();
+        int ret = saveFileDialog.showOpenDialog(null);
         
         if (ret == JFileChooser.APPROVE_OPTION) {
-            try (PrintWriter writer = new PrintWriter(saveFile.getSelectedFile())) {
-                DefaultListModel dlm = (DefaultListModel)lInputSet.getModel();
-                writer.println(dlm.size());
-                
-                for (int iCount = 0; iCount < dlm.size(); iCount++) {
-                    writer.println(dlm.get(iCount));
-                }   
-                
-                writer.println(tfRepetitions.getText());
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(FMain.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("Error saving file!");
-            } finally {
-                JOptionPane.showMessageDialog(this, "File saved.");
-            }
+            saveToFile(saveFileDialog.getSelectedFile());
         }
     }//GEN-LAST:event_mmSaveToFileActionPerformed
 
-    private void btnAddFixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFixedActionPerformed
-        DAddFixedTask daft = new DAddFixedTask(this, true);
-        daft.setVisible(true);
-    }//GEN-LAST:event_btnAddFixedActionPerformed
+    private void btnAddTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTaskActionPerformed
+        DAddTask dat = new DAddTask(this, true);
+        dat.setLocationRelativeTo(this);
+        dat.setVisible(true);
+        if (!dat.task.isEmpty()) {
+            addTask(dat.task);
+        }
+    }//GEN-LAST:event_btnAddTaskActionPerformed
 
     /**
      * @param args the command line arguments
@@ -219,21 +218,17 @@ public class FMain extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FMain().setVisible(true);
+                FMain fm = new FMain();
+                fm.setLocationRelativeTo(null);
+                fm.setVisible(true);
+                //new FMain().setVisible(true);
             }
         });
     }
     
-    public void addFixedTask(
-            String taskName, 
-            int phase, 
-            int deadline, 
-            int exeTime, 
-            int maxExeTime) {
+    private void addTask(String task) {
         DefaultListModel dlm = (DefaultListModel)lInputSet.getModel();
-        String newTask = taskName + " " + phase + " " + deadline + " " 
-                + maxExeTime + " FIXED " + exeTime;
-        dlm.addElement(newTask);
+        dlm.addElement(task);
     }
     
     private void loadInputFile(File f) {
@@ -247,6 +242,7 @@ public class FMain extends javax.swing.JFrame {
                 dlm.addElement(scan.nextLine());
             }
             
+            spnSimulationLength.setValue(Integer.valueOf(dlm.lastElement().toString()));
             dlm.removeElementAt(dlm.size() - 1);
             
             lInputSet.setModel(dlm);
@@ -256,20 +252,46 @@ public class FMain extends javax.swing.JFrame {
             System.out.println("File not found");
         }
     }
+    
+    private void saveToFile(File f) {
+        try (PrintWriter writer = new PrintWriter(f)) {
+                DefaultListModel dlm = (DefaultListModel)lInputSet.getModel();
+                writer.println(dlm.size());
+                
+                for (int iCount = 0; iCount < dlm.size(); iCount++) {
+                    writer.println(dlm.get(iCount));
+                }
+                
+                try {
+                    spnSimulationLength.commitEdit();
+                } catch (ParseException ex) {
+                    Logger.getLogger(FMain.class.getName()).log(Level.SEVERE, null, ex);
+                    System.out.println("Not a number!");
+                }
+                
+                writer.println(spnSimulationLength.getValue().toString());
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(FMain.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("Error saving file!");
+            } finally {
+                JOptionPane.showMessageDialog(this, "File saved.");
+            }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAddFixed;
-    private javax.swing.JButton btnAddRandomTask;
+    private javax.swing.JButton btnAddTask;
     private javax.swing.JButton btnRemoveTask;
     private javax.swing.JButton btnStart;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList lInputSet;
     private javax.swing.JMenuBar mainMenu;
     private javax.swing.JMenu mmFile;
     private javax.swing.JMenuItem mmLoadFromFile;
     private javax.swing.JMenuItem mmSaveToFile;
-    private javax.swing.JTextField tfRepetitions;
+    private javax.swing.JSpinner spnRepetitions;
+    private javax.swing.JSpinner spnSimulationLength;
     // End of variables declaration//GEN-END:variables
 }
