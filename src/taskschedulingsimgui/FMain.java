@@ -44,6 +44,10 @@ public class FMain extends javax.swing.JFrame {
         spnRepetitions = new javax.swing.JSpinner();
         spnSimulationLength = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel4 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox();
+        jLabel5 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JMenuBar();
         mmFile = new javax.swing.JMenu();
         mmLoadFromFile = new javax.swing.JMenuItem();
@@ -69,6 +73,11 @@ public class FMain extends javax.swing.JFrame {
         });
 
         btnStart.setText("Start");
+        btnStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStartActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Repetitions:");
 
@@ -79,6 +88,15 @@ public class FMain extends javax.swing.JFrame {
         spnSimulationLength.setValue(1);
 
         jLabel3.setText("Simulation length:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RM", "EDF", "DM" }));
+
+        jLabel4.setText("Algorithm:");
+        jLabel4.setToolTipText("Rate Monotonic, Earliest Deadline First or Deadline Monotonic");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "HARD", "SOFT" }));
+
+        jLabel5.setText("Type:");
 
         mmFile.setText("File");
 
@@ -121,10 +139,16 @@ public class FMain extends javax.swing.JFrame {
                     .addComponent(btnRemoveTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(spnRepetitions, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(spnRepetitions, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -141,7 +165,15 @@ public class FMain extends javax.swing.JFrame {
                         .addComponent(btnAddTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemoveTask)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 259, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(spnRepetitions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
@@ -175,7 +207,11 @@ public class FMain extends javax.swing.JFrame {
         int ret = saveFileDialog.showOpenDialog(null);
         
         if (ret == JFileChooser.APPROVE_OPTION) {
-            saveToFile(saveFileDialog.getSelectedFile());
+            if (saveToFile(saveFileDialog.getSelectedFile())) {
+                JOptionPane.showMessageDialog(null, "File saved.");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error saving file.");
+            }
         }
     }//GEN-LAST:event_mmSaveToFileActionPerformed
 
@@ -187,6 +223,25 @@ public class FMain extends javax.swing.JFrame {
             addTask(dat.task);
         }
     }//GEN-LAST:event_btnAddTaskActionPerformed
+
+    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+        File dirIo = new File("io");
+        File dirInput = new File("io/input");
+        File dirTrace = new File("io/trace");
+        
+        dirIo.mkdir();
+        dirInput.mkdir();
+        dirTrace.mkdir();
+        
+        saveToFile(new File("io/input/is"));
+        
+        DSimulation ds = new DSimulation(this, true, "", "RM", "HARD", "1");
+        ds.setLocationRelativeTo(this);
+        ds.setVisible(true);
+        
+//        File f = new File("is");
+//        f.delete();
+    }//GEN-LAST:event_btnStartActionPerformed
 
     /**
      * @param args the command line arguments
@@ -253,7 +308,7 @@ public class FMain extends javax.swing.JFrame {
         }
     }
     
-    private void saveToFile(File f) {
+    private boolean saveToFile(File f) {
         try (PrintWriter writer = new PrintWriter(f)) {
                 DefaultListModel dlm = (DefaultListModel)lInputSet.getModel();
                 writer.println(dlm.size());
@@ -270,11 +325,12 @@ public class FMain extends javax.swing.JFrame {
                 }
                 
                 writer.println(spnSimulationLength.getValue().toString());
+                
+                return true;
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(FMain.class.getName()).log(Level.SEVERE, null, ex);
                 System.out.println("Error saving file!");
-            } finally {
-                JOptionPane.showMessageDialog(this, "File saved.");
+                return false;
             }
     }
 
@@ -282,9 +338,13 @@ public class FMain extends javax.swing.JFrame {
     private javax.swing.JButton btnAddTask;
     private javax.swing.JButton btnRemoveTask;
     private javax.swing.JButton btnStart;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList lInputSet;
     private javax.swing.JMenuBar mainMenu;
