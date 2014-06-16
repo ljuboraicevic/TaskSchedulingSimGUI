@@ -7,15 +7,10 @@ import java.io.InputStreamReader;
 
 /**
  *
- * @author ljubo
+ * @author Ljubo Raicevic <rljubo90@gmail.com>
  */
 public class DSimulation extends javax.swing.JDialog {
 
-    private final String directory;
-    private final String algorithm;
-    private final String type;
-    private final String repetitions;
-    
     /**
      * Creates new form DSimulation
      */
@@ -27,11 +22,6 @@ public class DSimulation extends javax.swing.JDialog {
             String type,
             String repetitions) {
         super(parent, modal);
-        
-        this.directory = directory;
-        this.algorithm = algorithm;
-        this.type = type;
-        this.repetitions = repetitions;
         
         initComponents();
         
@@ -62,62 +52,20 @@ public class DSimulation extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(DSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(DSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(DSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(DSimulation.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the dialog */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                /*DSimulation dialog = new DSimulation(new javax.swing.JFrame(), true);
-//                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-//                    @Override
-//                    public void windowClosing(java.awt.event.WindowEvent e) {
-//                        System.exit(0);
-//                    }
-//                }); 
-//                dialog.setVisible(true); */
-//            }
-//        });
-//    }
-    
     private void executeSimulation(
             String dir, 
             String algorithm, 
@@ -129,8 +77,7 @@ public class DSimulation extends javax.swing.JDialog {
         
 	try {
             String command = "java -jar " + System.getProperty("user.dir") 
-                    + File.separator + "TaskSchedulingSimulator.jar 1 " 
-                    //+ dir + File.separator 
+                    + File.separator + "TaskSchedulingSimulator.jar 1 "  
                     + "is " + 
                     algorithm + " " 
                     + type + " "

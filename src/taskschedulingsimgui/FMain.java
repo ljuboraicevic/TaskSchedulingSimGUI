@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Ljubo Raicevi <rljubo90@gmail.com>
+ * @author Ljubo Raicevic <rljubo90@gmail.com>
  */
 public class FMain extends javax.swing.JFrame {
 
@@ -44,9 +44,9 @@ public class FMain extends javax.swing.JFrame {
         spnRepetitions = new javax.swing.JSpinner();
         spnSimulationLength = new javax.swing.JSpinner();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        cbAlgorithm = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox();
+        cbType = new javax.swing.JComboBox();
         jLabel5 = new javax.swing.JLabel();
         mainMenu = new javax.swing.JMenuBar();
         mmFile = new javax.swing.JMenu();
@@ -89,12 +89,12 @@ public class FMain extends javax.swing.JFrame {
 
         jLabel3.setText("Simulation length:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RM", "EDF", "DM" }));
+        cbAlgorithm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "RM", "EDF", "DM" }));
 
         jLabel4.setText("Algorithm:");
         jLabel4.setToolTipText("Rate Monotonic, Earliest Deadline First or Deadline Monotonic");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "HARD", "SOFT" }));
+        cbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "HARD", "SOFT" }));
 
         jLabel5.setText("Type:");
 
@@ -146,9 +146,9 @@ public class FMain extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cbAlgorithm, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(spnRepetitions, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(cbType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -167,11 +167,11 @@ public class FMain extends javax.swing.JFrame {
                         .addComponent(btnRemoveTask)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cbAlgorithm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -235,12 +235,16 @@ public class FMain extends javax.swing.JFrame {
         
         saveToFile(new File("io/input/is"));
         
-        DSimulation ds = new DSimulation(this, true, "", "RM", "HARD", "1");
+        DSimulation ds = new DSimulation(
+                this, 
+                true, 
+                "", 
+                cbAlgorithm.getModel().getSelectedItem().toString(), 
+                cbType.getModel().getSelectedItem().toString(), 
+                spnRepetitions.getValue().toString());
+        
         ds.setLocationRelativeTo(this);
         ds.setVisible(true);
-        
-//        File f = new File("is");
-//        f.delete();
     }//GEN-LAST:event_btnStartActionPerformed
 
     /**
@@ -338,8 +342,8 @@ public class FMain extends javax.swing.JFrame {
     private javax.swing.JButton btnAddTask;
     private javax.swing.JButton btnRemoveTask;
     private javax.swing.JButton btnStart;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox2;
+    private javax.swing.JComboBox cbAlgorithm;
+    private javax.swing.JComboBox cbType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
