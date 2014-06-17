@@ -1,5 +1,7 @@
 package taskschedulingsimgui;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Ljubo Raicevic <rljubo90@gmail.com>
@@ -36,8 +38,10 @@ public class DAddUniform extends javax.swing.JDialog {
         setTitle("Add Uniform");
         setResizable(false);
 
+        spnMinValue.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         spnMinValue.setValue(1);
 
+        spnMaxValue.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));
         spnMaxValue.setValue(2);
 
         jLabel1.setText("Minimum value:");
@@ -87,53 +91,20 @@ public class DAddUniform extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOKActionPerformed
-        minValue = spnMinValue.getValue().toString();
-        maxValue = spnMaxValue.getValue().toString();
-        this.dispose();
+        if (checkInput()) {
+            minValue = spnMinValue.getValue().toString();
+            maxValue = spnMaxValue.getValue().toString();
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Max value must be greater "
+                    + "than min value.");
+        }
     }//GEN-LAST:event_btnOKActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DAddUniform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DAddUniform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DAddUniform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DAddUniform.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                DAddUniform dialog = new DAddUniform(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+    private boolean checkInput() {
+        return (int)spnMaxValue.getValue() > (int)spnMinValue.getValue();
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnOK;
     private javax.swing.JLabel jLabel1;

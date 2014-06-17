@@ -83,8 +83,10 @@ public class FMain extends javax.swing.JFrame {
 
         jScrollPane2.setViewportView(lInputSet);
 
+        spnRepetitions.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         spnRepetitions.setValue(1);
 
+        spnSimulationLength.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
         spnSimulationLength.setValue(1);
 
         jLabel3.setText("Simulation length:");

@@ -44,7 +44,7 @@ public class DAddTask extends javax.swing.JDialog {
         tfExeTime = new javax.swing.JTextField();
         btnDeadlineProperties = new javax.swing.JButton();
         btnExeTimeProperties = new javax.swing.JButton();
-        spnAbsoluteDeadline = new javax.swing.JSpinner();
+        spnPeriod = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
 
         pmDeadlinePopup.setInvoker(btnDeadlineProperties);
@@ -106,6 +106,8 @@ public class DAddTask extends javax.swing.JDialog {
 
         tfTaskName.setText("unnamed_task");
 
+        spnPhase.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+
         jLabel2.setText("Initial phase:");
 
         jLabel3.setText("Deadline:");
@@ -131,9 +133,10 @@ public class DAddTask extends javax.swing.JDialog {
         btnExeTimeProperties.setText("Right click to set");
         btnExeTimeProperties.setComponentPopupMenu(pmExeTimePopup);
 
-        spnAbsoluteDeadline.setValue(1);
+        spnPeriod.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        spnPeriod.setValue(1);
 
-        jLabel5.setText("Absolute deadline:");
+        jLabel5.setText("Period:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,11 +159,11 @@ public class DAddTask extends javax.swing.JDialog {
                             .addComponent(tfExeTime))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnExeTimeProperties, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
+                            .addComponent(btnExeTimeProperties, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                             .addComponent(btnDeadlineProperties, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(tfTaskName)
                     .addComponent(spnPhase, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(spnAbsoluteDeadline))
+                    .addComponent(spnPeriod))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,7 +189,7 @@ public class DAddTask extends javax.swing.JDialog {
                     .addComponent(btnExeTimeProperties))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spnAbsoluteDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAddTask)
@@ -200,7 +203,7 @@ public class DAddTask extends javax.swing.JDialog {
         task = tfTaskName.getText() + " "
                 + spnPhase.getValue().toString() + " "
                 + tfDeadline.getText() + " "
-                + spnAbsoluteDeadline.getValue().toString() + " "
+                + spnPeriod.getValue().toString() + " "
                 + tfExeTime.getText();
         
         this.dispose();
@@ -343,7 +346,7 @@ public class DAddTask extends javax.swing.JDialog {
     private javax.swing.JMenuItem pmetpFreqTable;
     private javax.swing.JMenuItem pmetpUniform;
     private javax.swing.JMenuItem pmpdFixed;
-    private javax.swing.JSpinner spnAbsoluteDeadline;
+    private javax.swing.JSpinner spnPeriod;
     private javax.swing.JSpinner spnPhase;
     private javax.swing.JTextField tfDeadline;
     private javax.swing.JTextField tfExeTime;
