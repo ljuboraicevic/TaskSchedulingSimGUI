@@ -37,7 +37,7 @@ public class FMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnAddTask = new javax.swing.JButton();
         btnRemoveTask = new javax.swing.JButton();
-        btnStart = new javax.swing.JButton();
+        btnSimulate = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         lInputSet = new javax.swing.JList();
@@ -72,10 +72,10 @@ public class FMain extends javax.swing.JFrame {
             }
         });
 
-        btnStart.setText("Start");
-        btnStart.addActionListener(new java.awt.event.ActionListener() {
+        btnSimulate.setText("Simulate");
+        btnSimulate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnStartActionPerformed(evt);
+                btnSimulateActionPerformed(evt);
             }
         });
 
@@ -140,7 +140,7 @@ public class FMain extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnRemoveTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnAddTask, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnStart, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnSimulate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
@@ -180,7 +180,7 @@ public class FMain extends javax.swing.JFrame {
                             .addComponent(spnRepetitions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnStart, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnSimulate, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
@@ -226,7 +226,7 @@ public class FMain extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnAddTaskActionPerformed
 
-    private void btnStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartActionPerformed
+    private void btnSimulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimulateActionPerformed
         File dirIo = new File("io");
         File dirInput = new File("io/input");
         File dirTrace = new File("io/trace");
@@ -235,7 +235,7 @@ public class FMain extends javax.swing.JFrame {
         dirInput.mkdir();
         dirTrace.mkdir();
         
-        saveToFile(new File("io/input/is"));
+        saveToFile(new File("io/input/SIMULATION"));
         
         DSimulation ds = new DSimulation(
                 this, 
@@ -247,7 +247,7 @@ public class FMain extends javax.swing.JFrame {
         
         ds.setLocationRelativeTo(this);
         ds.setVisible(true);
-    }//GEN-LAST:event_btnStartActionPerformed
+    }//GEN-LAST:event_btnSimulateActionPerformed
 
     /**
      * @param args the command line arguments
@@ -343,7 +343,7 @@ public class FMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddTask;
     private javax.swing.JButton btnRemoveTask;
-    private javax.swing.JButton btnStart;
+    private javax.swing.JButton btnSimulate;
     private javax.swing.JComboBox cbAlgorithm;
     private javax.swing.JComboBox cbType;
     private javax.swing.JLabel jLabel1;

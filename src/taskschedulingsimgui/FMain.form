@@ -70,7 +70,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="btnRemoveTask" alignment="1" max="32767" attributes="0"/>
                   <Component id="btnAddTask" alignment="1" max="32767" attributes="0"/>
-                  <Component id="btnStart" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btnSimulate" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
@@ -120,7 +120,7 @@
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnStart" min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="btnSimulate" min="-2" pref="72" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane2" max="32767" attributes="0"/>
               </Group>
@@ -151,12 +151,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRemoveTaskActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btnStart">
+    <Component class="javax.swing.JButton" name="btnSimulate">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Start"/>
+        <Property name="text" type="java.lang.String" value="Simulate"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnStartActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimulateActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
