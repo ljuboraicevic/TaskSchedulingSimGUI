@@ -227,26 +227,30 @@ public class FMain extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddTaskActionPerformed
 
     private void btnSimulateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimulateActionPerformed
-        File dirIo = new File("io");
-        File dirInput = new File("io/input");
-        File dirTrace = new File("io/trace");
-        
-        dirIo.mkdir();
-        dirInput.mkdir();
-        dirTrace.mkdir();
-        
-        saveToFile(new File("io/input/SIMULATION"));
-        
-        DSimulation ds = new DSimulation(
-                this, 
-                true, 
-                "", 
-                cbAlgorithm.getModel().getSelectedItem().toString(), 
-                cbType.getModel().getSelectedItem().toString(), 
-                spnRepetitions.getValue().toString());
-        
-        ds.setLocationRelativeTo(this);
-        ds.setVisible(true);
+        if (lInputSet.getModel().getSize() > 0) {
+            File dirIo = new File("io");
+            File dirInput = new File("io/input");
+            File dirTrace = new File("io/trace");
+
+            dirIo.mkdir();
+            dirInput.mkdir();
+            dirTrace.mkdir();
+
+            saveToFile(new File("io/input/SIMULATION"));
+
+            DSimulation ds = new DSimulation(
+                    this, 
+                    true, 
+                    "", 
+                    cbAlgorithm.getModel().getSelectedItem().toString(), 
+                    cbType.getModel().getSelectedItem().toString(), 
+                    spnRepetitions.getValue().toString());
+
+            ds.setLocationRelativeTo(this);
+            ds.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "No tasks in input set.");
+        }
     }//GEN-LAST:event_btnSimulateActionPerformed
 
     /**
