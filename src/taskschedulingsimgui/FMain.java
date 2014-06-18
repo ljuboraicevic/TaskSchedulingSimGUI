@@ -198,7 +198,7 @@ public class FMain extends javax.swing.JFrame {
     }//GEN-LAST:event_mmLoadFromFileActionPerformed
 
     private void btnRemoveTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveTaskActionPerformed
-        if (lInputSet.getModel().getSize() > 0) {
+        if (lInputSet.getSelectedIndex() > -1) {
             DefaultListModel dlm = (DefaultListModel) lInputSet.getModel();
             dlm.removeElementAt(lInputSet.getSelectedIndex());
         }

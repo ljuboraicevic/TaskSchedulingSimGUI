@@ -235,8 +235,6 @@ public class DSimulation extends javax.swing.JDialog {
         if ((int)spnEndInterval.getValue() > (int)spnStartInterval.getValue()
                 && lTraceFiles.getSelectedIndex() != -1) {
             
-            System.out.println(32 - sldWidth.getValue());
-            
             FGanttChart fgc = new FGanttChart(
                     null,
                     true,
@@ -270,7 +268,6 @@ public class DSimulation extends javax.swing.JDialog {
                     + type + " "
                     + repetitions; 
             
-            System.out.println(command);
             p = Runtime.getRuntime().exec(command);
             p.waitFor();
             BufferedReader reader = 
