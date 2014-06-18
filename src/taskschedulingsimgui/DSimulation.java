@@ -19,7 +19,8 @@ public class DSimulation extends javax.swing.JDialog {
     private final String algorithm;
     private final String type;
     private final String repetitions;
-    private Timer t;
+    private final Timer timer;
+    private Thread simulationThread;
     
     /**
      * Creates new form DSimulation
@@ -43,13 +44,12 @@ public class DSimulation extends javax.swing.JDialog {
         lblRepetitions.setText("/" + repetitions);
         deleteFilesFromTraceDir();
         
-        t = new Timer();
-        t.scheduleAtFixedRate(new TimerTask() {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
 
             @Override
             public void run() {
-                lTraceFiles.setModel(getTraceFiles());
-                lblProgress.setText(Integer.toString(lTraceFiles.getModel().getSize()));
+                updateProgress();
             }
         }, 0, 5000);
     }
@@ -224,18 +224,22 @@ public class DSimulation extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnStartSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSimulationActionPerformed
-        new Thread(new Runnable() {
+        simulationThread = new Thread(new Runnable() {
             public void run() {
                 taOutput.setText(executeSimulation(directory, algorithm, type, repetitions));
+                updateProgress();
+                timer.cancel();
             }
-        }).start();
+        });
+        simulationThread.start();
+        btnStartSimulation.setEnabled(false);
     }//GEN-LAST:event_btnStartSimulationActionPerformed
 
     private void btnDrawDiagramActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDrawDiagramActionPerformed
         if ((int)spnEndInterval.getValue() > (int)spnStartInterval.getValue()
                 && lTraceFiles.getSelectedIndex() != -1) {
             
-            FGanttChart fgc = new FGanttChart(
+            DGanttChart fgc = new DGanttChart(
                     null,
                     true,
                     "io/trace/" + lTraceFiles.getSelectedValue().toString(), 
@@ -302,6 +306,13 @@ public class DSimulation extends javax.swing.JDialog {
         for (File f: files) {
             f.delete();
         }
+    }
+    
+    private void updateProgress() {
+        int listSelected = lTraceFiles.getSelectedIndex();
+        lTraceFiles.setModel(getTraceFiles());
+        lTraceFiles.setSelectedIndex(listSelected);
+        lblProgress.setText(Integer.toString(lTraceFiles.getModel().getSize()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

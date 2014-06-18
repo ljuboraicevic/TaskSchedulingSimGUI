@@ -119,7 +119,7 @@ public final class TraceFileAnalyzer {
             }
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(FGanttChart.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DGanttChart.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("File not found!");
         }
     }

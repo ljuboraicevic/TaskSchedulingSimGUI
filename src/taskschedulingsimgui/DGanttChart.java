@@ -10,12 +10,12 @@ import javax.swing.JViewport;
  * @author Ljubo Raicevic <rljubo90@gmail.com>
  */
 
-public class FGanttChart extends javax.swing.JDialog {
+public class DGanttChart extends javax.swing.JDialog {
 
     /**
      * Creates new form FMain
      */
-    public FGanttChart(
+    public DGanttChart(
             java.awt.Frame parent, 
             boolean modal,
             String file, 
@@ -46,7 +46,7 @@ public class FGanttChart extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
