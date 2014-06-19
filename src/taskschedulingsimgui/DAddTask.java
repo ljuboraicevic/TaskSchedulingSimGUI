@@ -25,10 +25,10 @@ public class DAddTask extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pmDeadlinePopup = new javax.swing.JPopupMenu();
-        pmpdFixed = new javax.swing.JMenuItem();
-        pmdpUniform = new javax.swing.JMenuItem();
-        pmdpFreqTable = new javax.swing.JMenuItem();
+        pmPeriodPopup = new javax.swing.JPopupMenu();
+        pmppFixed = new javax.swing.JMenuItem();
+        pmppUniform = new javax.swing.JMenuItem();
+        pmppFreqTable = new javax.swing.JMenuItem();
         pmExeTimePopup = new javax.swing.JPopupMenu();
         pmetpFixed = new javax.swing.JMenuItem();
         pmetpUniform = new javax.swing.JMenuItem();
@@ -40,39 +40,39 @@ public class DAddTask extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAddTask = new javax.swing.JButton();
-        tfDeadline = new javax.swing.JTextField();
+        tfPeriod = new javax.swing.JTextField();
         tfExeTime = new javax.swing.JTextField();
         btnDeadlineProperties = new javax.swing.JButton();
         btnExeTimeProperties = new javax.swing.JButton();
-        spnPeriod = new javax.swing.JSpinner();
+        spnDeadline = new javax.swing.JSpinner();
         jLabel5 = new javax.swing.JLabel();
 
-        pmDeadlinePopup.setInvoker(btnDeadlineProperties);
-        pmDeadlinePopup.setName(""); // NOI18N
+        pmPeriodPopup.setInvoker(btnDeadlineProperties);
+        pmPeriodPopup.setName(""); // NOI18N
 
-        pmpdFixed.setText("Add Fixed Deadline");
-        pmpdFixed.addActionListener(new java.awt.event.ActionListener() {
+        pmppFixed.setText("Add Fixed Period");
+        pmppFixed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pmpdFixedActionPerformed(evt);
+                pmppFixedActionPerformed(evt);
             }
         });
-        pmDeadlinePopup.add(pmpdFixed);
+        pmPeriodPopup.add(pmppFixed);
 
-        pmdpUniform.setText("Add Uniformly Random Deadline");
-        pmdpUniform.addActionListener(new java.awt.event.ActionListener() {
+        pmppUniform.setText("Add Uniformly Random Period");
+        pmppUniform.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pmdpUniformActionPerformed(evt);
+                pmppUniformActionPerformed(evt);
             }
         });
-        pmDeadlinePopup.add(pmdpUniform);
+        pmPeriodPopup.add(pmppUniform);
 
-        pmdpFreqTable.setText("Add Deadline with Frequency Table");
-        pmdpFreqTable.addActionListener(new java.awt.event.ActionListener() {
+        pmppFreqTable.setText("Add Period with Frequency Table");
+        pmppFreqTable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pmdpFreqTableActionPerformed(evt);
+                pmppFreqTableActionPerformed(evt);
             }
         });
-        pmDeadlinePopup.add(pmdpFreqTable);
+        pmPeriodPopup.add(pmppFreqTable);
 
         pmetpFixed.setText("Add Fixed Execution Time");
         pmetpFixed.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +110,7 @@ public class DAddTask extends javax.swing.JDialog {
 
         jLabel2.setText("Initial phase:");
 
-        jLabel3.setText("Deadline:");
+        jLabel3.setText("Period:");
 
         jLabel4.setText("Execution time:");
 
@@ -121,22 +121,22 @@ public class DAddTask extends javax.swing.JDialog {
             }
         });
 
-        tfDeadline.setEditable(false);
-        tfDeadline.setText("FIXED 1");
+        tfPeriod.setEditable(false);
+        tfPeriod.setText("FIXED 1");
 
         tfExeTime.setEditable(false);
         tfExeTime.setText("FIXED 1");
 
         btnDeadlineProperties.setText("Right click to set");
-        btnDeadlineProperties.setComponentPopupMenu(pmDeadlinePopup);
+        btnDeadlineProperties.setComponentPopupMenu(pmPeriodPopup);
 
         btnExeTimeProperties.setText("Right click to set");
         btnExeTimeProperties.setComponentPopupMenu(pmExeTimePopup);
 
-        spnPeriod.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
-        spnPeriod.setValue(1);
+        spnDeadline.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        spnDeadline.setValue(1);
 
-        jLabel5.setText("Period:");
+        jLabel5.setText("Deadline:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -155,7 +155,7 @@ public class DAddTask extends javax.swing.JDialog {
                     .addComponent(btnAddTask, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tfDeadline, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
+                            .addComponent(tfPeriod, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                             .addComponent(tfExeTime))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -163,7 +163,7 @@ public class DAddTask extends javax.swing.JDialog {
                             .addComponent(btnDeadlineProperties, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(tfTaskName)
                     .addComponent(spnPhase, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(spnPeriod))
+                    .addComponent(spnDeadline))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -179,7 +179,7 @@ public class DAddTask extends javax.swing.JDialog {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
                     .addComponent(btnDeadlineProperties))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,7 +189,7 @@ public class DAddTask extends javax.swing.JDialog {
                     .addComponent(btnExeTimeProperties))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spnPeriod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(spnDeadline, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAddTask)
@@ -202,39 +202,39 @@ public class DAddTask extends javax.swing.JDialog {
     private void btnAddTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddTaskActionPerformed
         task = tfTaskName.getText() + " "
                 + spnPhase.getValue().toString() + " "
-                + tfDeadline.getText() + " "
-                + spnPeriod.getValue().toString() + " "
+                + tfPeriod.getText() + " "
+                + spnDeadline.getValue().toString() + " "
                 + tfExeTime.getText();
         
         this.dispose();
     }//GEN-LAST:event_btnAddTaskActionPerformed
 
-    private void pmpdFixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmpdFixedActionPerformed
+    private void pmppFixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmppFixedActionPerformed
         DAddFixed daf = new DAddFixed(null, true);
         daf.setLocationRelativeTo(this);
         daf.setVisible(true);
         if (!daf.value.isEmpty()) {
             addFixedDeadline(daf.value);
         }
-    }//GEN-LAST:event_pmpdFixedActionPerformed
+    }//GEN-LAST:event_pmppFixedActionPerformed
 
-    private void pmdpUniformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmdpUniformActionPerformed
+    private void pmppUniformActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmppUniformActionPerformed
         DAddUniform dau = new DAddUniform(null, true);
         dau.setLocationRelativeTo(this);
         dau.setVisible(true);
         if (!dau.minValue.isEmpty() && !dau.maxValue.isEmpty()) {
             addUniformDeadline(dau.minValue, dau.maxValue);
         }
-    }//GEN-LAST:event_pmdpUniformActionPerformed
+    }//GEN-LAST:event_pmppUniformActionPerformed
 
-    private void pmdpFreqTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmdpFreqTableActionPerformed
+    private void pmppFreqTableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmppFreqTableActionPerformed
         DAddFreqTable daft = new DAddFreqTable(null, true);
         daft.setLocationRelativeTo(this);
         daft.setVisible(true);
         if (!daft.table.isEmpty()) {
             addFreqTableDeadline(daft.table);
         }
-    }//GEN-LAST:event_pmdpFreqTableActionPerformed
+    }//GEN-LAST:event_pmppFreqTableActionPerformed
 
     private void pmetpFixedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pmetpFixedActionPerformed
         DAddFixed daf = new DAddFixed(null, true);
@@ -264,15 +264,15 @@ public class DAddTask extends javax.swing.JDialog {
     }//GEN-LAST:event_pmetpFreqTableActionPerformed
     
     private void addFixedDeadline(String value) {
-        tfDeadline.setText("FIXED " + value);
+        tfPeriod.setText("FIXED " + value);
     }
     
     private void addUniformDeadline(String min, String max) {
-        tfDeadline.setText("MIN_MAX_UNIFORM " + min + " " + max + " 0");
+        tfPeriod.setText("MIN_MAX_UNIFORM " + min + " " + max + " 0");
     }
     
     private void addFreqTableDeadline(String table) {
-        tfDeadline.setText("FREQUENCY_TABLE " + table);
+        tfPeriod.setText("FREQUENCY_TABLE " + table);
     }
     
     private void addFixedExeTime(String value) {
@@ -296,18 +296,18 @@ public class DAddTask extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JPopupMenu pmDeadlinePopup;
     private javax.swing.JPopupMenu pmExeTimePopup;
-    private javax.swing.JMenuItem pmdpFreqTable;
-    private javax.swing.JMenuItem pmdpUniform;
+    private javax.swing.JPopupMenu pmPeriodPopup;
     private javax.swing.JMenuItem pmetpFixed;
     private javax.swing.JMenuItem pmetpFreqTable;
     private javax.swing.JMenuItem pmetpUniform;
-    private javax.swing.JMenuItem pmpdFixed;
-    private javax.swing.JSpinner spnPeriod;
+    private javax.swing.JMenuItem pmppFixed;
+    private javax.swing.JMenuItem pmppFreqTable;
+    private javax.swing.JMenuItem pmppUniform;
+    private javax.swing.JSpinner spnDeadline;
     private javax.swing.JSpinner spnPhase;
-    private javax.swing.JTextField tfDeadline;
     private javax.swing.JTextField tfExeTime;
+    private javax.swing.JTextField tfPeriod;
     private javax.swing.JTextField tfTaskName;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,7 +2,7 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Container class="javax.swing.JPopupMenu" name="pmDeadlinePopup">
+    <Container class="javax.swing.JPopupMenu" name="pmPeriodPopup">
       <Properties>
         <Property name="invoker" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="btnDeadlineProperties"/>
@@ -14,28 +14,28 @@
         <Property name="useNullLayout" type="boolean" value="true"/>
       </Layout>
       <SubComponents>
-        <MenuItem class="javax.swing.JMenuItem" name="pmpdFixed">
+        <MenuItem class="javax.swing.JMenuItem" name="pmppFixed">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Fixed Deadline"/>
+            <Property name="text" type="java.lang.String" value="Add Fixed Period"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmpdFixedActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmppFixedActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="pmdpUniform">
+        <MenuItem class="javax.swing.JMenuItem" name="pmppUniform">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Uniformly Random Deadline"/>
+            <Property name="text" type="java.lang.String" value="Add Uniformly Random Period"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmdpUniformActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmppUniformActionPerformed"/>
           </Events>
         </MenuItem>
-        <MenuItem class="javax.swing.JMenuItem" name="pmdpFreqTable">
+        <MenuItem class="javax.swing.JMenuItem" name="pmppFreqTable">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Add Deadline with Frequency Table"/>
+            <Property name="text" type="java.lang.String" value="Add Period with Frequency Table"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmdpFreqTableActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pmppFreqTableActionPerformed"/>
           </Events>
         </MenuItem>
       </SubComponents>
@@ -111,7 +111,7 @@
                   <Component id="btnAddTask" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="tfDeadline" pref="243" max="32767" attributes="0"/>
+                          <Component id="tfPeriod" pref="243" max="32767" attributes="0"/>
                           <Component id="tfExeTime" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -122,7 +122,7 @@
                   </Group>
                   <Component id="tfTaskName" alignment="0" max="32767" attributes="0"/>
                   <Component id="spnPhase" alignment="1" max="32767" attributes="0"/>
-                  <Component id="spnPeriod" alignment="0" max="32767" attributes="0"/>
+                  <Component id="spnDeadline" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -143,7 +143,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="tfDeadline" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tfPeriod" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnDeadlineProperties" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -155,7 +155,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="spnPeriod" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnDeadline" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -190,7 +190,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Deadline:"/>
+        <Property name="text" type="java.lang.String" value="Period:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -206,7 +206,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddTaskActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="tfDeadline">
+    <Component class="javax.swing.JTextField" name="tfPeriod">
       <Properties>
         <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" value="FIXED 1"/>
@@ -222,7 +222,7 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Right click to set"/>
         <Property name="componentPopupMenu" type="javax.swing.JPopupMenu" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="pmDeadlinePopup"/>
+          <ComponentRef name="pmPeriodPopup"/>
         </Property>
       </Properties>
     </Component>
@@ -234,7 +234,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JSpinner" name="spnPeriod">
+    <Component class="javax.swing.JSpinner" name="spnDeadline">
       <Properties>
         <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
           <SpinnerModel initial="1" minimum="1" numberType="java.lang.Integer" stepSize="1" type="number"/>
@@ -246,7 +246,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Period:"/>
+        <Property name="text" type="java.lang.String" value="Deadline:"/>
       </Properties>
     </Component>
   </SubComponents>
